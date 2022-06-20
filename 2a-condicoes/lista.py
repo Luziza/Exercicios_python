@@ -34,6 +34,13 @@ def maior3(a, b, c):
         float: o maior entre os três valores.
     """
 
+    if a > b and a > c:
+        return a
+    elif b > a and b > c:
+        return b
+    else: 
+        return c
+
 
 def menor3(a, b, c):
     """Recebe três valores, e retorna o menor dos três.
@@ -46,6 +53,13 @@ def menor3(a, b, c):
     Retorna:
         float: o menor entre os três valores.
     """
+
+    if a < b and a < c:
+        return a
+    elif b < a and b < c:
+        return b
+    else: 
+        return c
 
 
 def testa_lados(a, b, c):
@@ -63,6 +77,14 @@ def testa_lados(a, b, c):
                 conforme aparece nos testes no final desse arquivo.
     """
 
+    if a + b < c or c + a < b or b + c < a:
+        return "Não forma um triângulo"
+    elif a == b == c:
+        return "Triângulo equilátero"
+    elif a != b != c and a != c:
+        return "Triângulo escaleno"
+    else: 
+        return "Triângulo isósceles"
 
 def ano_bissexto(ano):
     """Determine se um ano é bissexto ou não.
@@ -73,6 +95,11 @@ def ano_bissexto(ano):
     Retorna:
         bool: True ou False (verdadeiro ou falso), caso a ano seja ou não bissexto.
     """
+
+    if ano % 4 == 0 and ano % 100 != 0 or ano % 400 == 0:
+        return True
+    else:
+        return False
 
 
 def maior_dia_do_mes(mes, ano):
@@ -90,6 +117,14 @@ def maior_dia_do_mes(mes, ano):
         int: um inteiro indicando o último dia válido para aquele mês e ano.
     """
 
+    if mes == 1 or mes == 3 or mes == 5 or mes == 7  or mes == 10 or mes == 12:
+        return 31
+    elif mes == 4 or mes == 6 or mes == 8 or mes == 9 or mes == 11 :
+        return 30
+    elif ano % 4 == 0 and ano % 100 != 0 or ano % 400 == 0 and mes == 2:
+        return 29
+    else: return 28
+
 
 def data_valida(data):
     """Recebe uma string no formato dd/mm/aaaa e informa
@@ -104,6 +139,17 @@ def data_valida(data):
         bool: True ou False, indicando se a datá é válida ou não.
     """
 
+    d, m, a = data.split("/")
+    if int(d) == 0 or int(m) == 0 or int(a) == 0:
+        return False
+    elif int(m) == 4 or int(m) == 6 or int(m) == 8 or int(m) == 9 or int(m) == 10 or int(m) == 11 and int(d) == 31:
+        return False
+    elif int(m) == 4  and int(d) == 30:
+        return True
+    elif int(d) > 31 or int(m) > 12:
+        return False
+    else: 
+        return True
 
 def delta(a, b, c):
     """Calcula delta, que é utilizado na fórmula de báskara.
@@ -117,6 +163,9 @@ def delta(a, b, c):
     Retorna:
         (float): o valor do delta
     """
+
+    delta = (b * b) - (4*a*c)
+    return delta
 
 
 def baskara(a, b, c):
@@ -140,6 +189,23 @@ def baskara(a, b, c):
         tupla de floats: uma tupla, contando os valores das raízes, sendo
         uma raiz, duas raízes ou uma tupla vazia caso não existam raízes.
     """
+
+    import math
+    delta = (b * b) - (4*a*c)
+
+    if a == 0:
+        return (-c/b,)
+    elif delta < 0:
+        return ( )
+    elif delta == 0:
+        return ((-b + math.sqrt(delta)) / 2*a, )
+    elif delta > 0:
+        conta1 = (-b + math.sqrt(delta)) / (2*a)
+        conta2 = (-b - math.sqrt(delta)) / (2*a)
+        return (conta1, conta2)
+
+
+
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!

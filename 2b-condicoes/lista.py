@@ -188,6 +188,16 @@ def converte_hora_24_para_12(horario):
 
     """
 
+    hora, minuto = horario.split(":")
+    if int(hora) == 0 :
+        return "12:" + minuto + " am"
+    if int(hora) < 12 and int(minuto) <= 59:
+        return str(int(hora)) + ":" + minuto + " am"
+    if int(hora) == 12:
+        return "12:" + minuto + " pm"
+    if int(hora) > 12 :
+        conta = int(hora) - 12
+        return str(conta) + ":" + minuto + " pm"
 
 
 def converte_hora_12_para_24(horario):
@@ -204,6 +214,24 @@ def converte_hora_12_para_24(horario):
     Retorna:
         string: horario no formato 24 horas
     """
+
+    horas, momento = horario.split(" ")
+    hora, minutos = horas.split(":")
+    
+
+    if int(hora) == 12 and momento == "am":
+        return "00:" + (minutos)
+    elif int(hora) < 10 and momento == "am":
+        return "0"+ hora + ":" + minutos
+    elif int(hora) < 12 and (int(hora)) > 9 and momento == "am":
+        return hora + ":" + minutos
+    elif int(hora) == 12 and momento == "pm":
+        return "12:" + (minutos)
+    elif int(hora) < 12 and momento == "pm":
+        conta = int(hora) + 12
+        return str(conta) + ":" + minutos
+
+
 
 
 def conta_combustivel(qtde_litros, tipo_combustivel, tipo_pagamento):
@@ -234,7 +262,7 @@ def conta_combustivel(qtde_litros, tipo_combustivel, tipo_pagamento):
     debito = "d"
     credito = "c"
     
-    if tipo_combustivel == alcool and tipo_pagamento == vista or tipo_pagamento == debito:
+    if tipo_combustivel == alcool and tipo_pagamento == vista or tipo_combustivel == alcool and tipo_pagamento == debito:
         valor = qtde_litros * 3.159
         return  round(valor - (valor * 0.10), 2)
     elif tipo_combustivel == alcool and tipo_pagamento == credito:
@@ -243,13 +271,13 @@ def conta_combustivel(qtde_litros, tipo_combustivel, tipo_pagamento):
     elif tipo_combustivel == diesel and tipo_pagamento == credito:
         valor3 = qtde_litros * 3.090
         return  round(valor3, 2)
-    elif tipo_combustivel == diesel and tipo_pagamento == vista or tipo_pagamento == debito:
+    elif tipo_combustivel == diesel and tipo_pagamento == vista or tipo_combustivel == diesel and tipo_pagamento == debito:
         valor3 = qtde_litros * 3.090
         return  round(valor3 - (valor3 * 0.10), 2)
     elif tipo_combustivel == gasolina and tipo_pagamento == credito:
         valor2 = qtde_litros * 3.739
         return round(valor2, 2)
-    elif tipo_combustivel == gasolina and tipo_pagamento == debito or tipo_pagamento == vista:
+    elif tipo_combustivel == gasolina and tipo_pagamento == debito or tipo_combustivel == gasolina and tipo_pagamento == vista:
         valor2 = qtde_litros * 3.739
         return round(valor2 - (valor2 * 0.10), 2)
 
@@ -278,17 +306,43 @@ def comprar_frutas(morango=0, uva=0):
         float: o preço a pagar, com 2 casas decimais
     """
 
-    if uva <= 5 or morango <= 5:
+    """ if uva <= 5 or morango <= 5:
         preco4 = uva * 1.80
         preco1 = 2.50 * morango
         return preco1 + preco4
-
     if morango > 5 or uva > 5:
         preco2 = morango * 2.20
         preco3 = 1.80 * uva
-        return preco2 + preco3
+        return preco2 + preco3 """
+    
+    if morango <= 5 and uva <=5:
+        total = round(morango * 2.5 + uva * 1.8, 2)
+        if morango + uva > 8 or total > 25:
+            desconto = total * 0.1
+            return total - desconto
+        else:
+            return total
+    elif morango <= 5:
+        total = round(morango * 2.5 + uva * 1.5, 2)
+        if morango + uva > 8 or total > 25:
+            desconto = total * 0.1
+            return total - desconto
+        else:
+            return total
+    elif uva <=5:
+        total = round(morango * 2.2 + uva * 1.8, 2)
+        if morango + uva > 8 or total > 25:
+            desconto = total * 0.1
+            return total - desconto
+        else:
+            return total
+    else:
+        total = round(morango * 2.2 + uva * 1.5, 2)
+        desconto = total * 0.1
+        return total - desconto
 
-    #if morango + uva > 8:
+
+   
         
         
     
@@ -397,7 +451,7 @@ def main():
     test(converte_hora_24_para_12("23:00"), "11:00 pm")
     test(converte_hora_24_para_12("23:59"), "11:59 pm")
 
-    # print("Converte hora 12 para 24:")
+    print("Converte hora 12 para 24:")
     # # 1- Use “00:00” para representar a meia-noite.
     test(converte_hora_12_para_24("12:00 am"), "00:00")
     test(converte_hora_12_para_24("12:01 am"), "00:01")

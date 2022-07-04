@@ -59,6 +59,11 @@ def soma_das_temperaturas_dos_inteiros(valor1, valor2):
         float: a soma_das_temperaturas dos valores dentro do intervalo dado.
     """
 
+    lista = []
+    for i in range (valor1 + 1, valor2):
+        lista.append(i)
+    return sum(lista)  
+
 
 
 
@@ -163,6 +168,12 @@ def media_anual(temperaturas):
         temperatura média foi maior que a temperatura média anual.
     """
 
+    lista = []
+    anual = sum(temperaturas) / len (temperaturas)
+    for i, numero in enumerate(temperaturas):
+        if numero > anual:
+            lista.append(i)
+    return lista
 
 def maiores_13(idades, alturas):
     """Receba as idades e alturas de diversas pessoas, em duas
@@ -178,6 +189,27 @@ def maiores_13(idades, alturas):
         uma lista de alturas dos alunos, conforme o criério definido.
     """
 
+    lista_a = []
+    lista_i = []
+    lista_nova = []
+
+    for i in idades:
+        lista_i.append(i)
+    for n in alturas:
+        lista_a.append(n)
+    
+    conta_i = sum(lista_i) / len(lista_i)
+    conta_a = sum(lista_a) / len(lista_a)
+
+    for a in idades:
+        if a > 13:
+            lista_nova.append(a)
+    for y in alturas:
+        if y < conta_a:
+            lista_nova.append(y)
+
+    return lista_nova
+
 
 def testa_primo(valor):
     """Recebe um valor e verifica se ele é um número primo ou não.
@@ -188,6 +220,7 @@ def testa_primo(valor):
     Retorna:
         bool: True ou False, se o valor e ou não primo.
     """
+        
 
 
 def lista_de_primos(inicio, fim):
@@ -201,6 +234,13 @@ def lista_de_primos(inicio, fim):
     Retorna:
         lista de inteiros, os primos dentro do intervalo especificado.
     """
+
+    lista = []
+    for i in range(inicio, fim):
+            if  i == 2 or i == 3 or i == 5 or i == 11 or i == 7 or i == 13 or i > 1 and i % i == 0 and i % 2 != 0  and i % 3 != 0 and i % 5 != 0 and i % 11 != 0 and  i % 13 != 0 and i % 7 != 0:
+                lista.append(i)
+    return lista
+
 
 
 def fibonacci(n):
@@ -230,6 +270,7 @@ def altera_salarios(salarios):
     Retorna:
         uma lista de elementos float, correspondendo aos salários corrigidos.
     """
+
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!

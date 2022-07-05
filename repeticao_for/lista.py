@@ -7,6 +7,9 @@
 # Utilizar "for i, item in enumerate(item) sempre que possível.
 
 
+import math
+
+
 def soma_das_temperaturas(lista):
     """Retorna a soma_das_temperaturas dos elementos de uma lista.
 
@@ -36,8 +39,8 @@ def quantidade_de_impares(valor_inicial, valor_final):
     """
 
     
-    valor1 = valor_inicial - 1
-    valor2 = valor_final - 1
+    valor1 = valor_inicial + 1
+    valor2 = valor_final 
     lista = []
     for i in range(valor1, valor2):
         if i % 2 != 0:
@@ -60,9 +63,14 @@ def soma_das_temperaturas_dos_inteiros(valor1, valor2):
     """
 
     lista = []
-    for i in range (valor1 + 1, valor2):
-        lista.append(i)
-    return sum(lista)  
+    if valor1 < valor2:
+        for i in range (valor1 + 1, valor2):
+            lista.append(i)
+        return sum(lista)
+    elif valor1 > valor2:
+        for i in range (valor2 + 1, valor1):
+            lista.append(i)
+        return sum(lista)
 
 
 
@@ -80,6 +88,12 @@ def serie(n):
 
     """
 
+    lista = []
+    for i in range(1, n + 1):
+        conta = (1/i)
+        lista.append(conta)
+    return round(sum(lista), 2)
+
 
 def ordenamento_contrario(lista):
     """Inverta a ordem dos elemntos da lista.
@@ -90,6 +104,10 @@ def ordenamento_contrario(lista):
     Retorna:
         list: uma lista com os elementos a ordem invertida.
     """
+
+
+
+
 
 
 def intercalamento_listas(lista1, lista2):
@@ -106,6 +124,14 @@ def intercalamento_listas(lista1, lista2):
     Retorna:
         list: uma lista com os elementos intercalados das duas listas recebidas.
     """
+
+    novo = []
+    # zip: O que a função fez foi: para cada elemento da lista x, juntou o elemento correspondente 
+    # em posição da lista y a ele em uma tupla e a adicionou a uma lista.
+    for i, a in zip(lista1, lista2):
+        novo.append(i)
+        novo.append(a)
+    return novo
 
 
 def im_pares(lista):
@@ -139,6 +165,16 @@ def maior_menor(lista):
         uma tupla com dois números inteiros, o maior e o menor da lista.
     """
 
+    tupla = []
+    for i in lista:
+        if i == max(lista):
+            tupla.append(i)
+        elif i  == min(lista):
+            tupla.append(i)
+    return tuple(sorted(tupla, reverse=True))
+
+           
+
 
 def dar_troco(valor_a_pagar, valor_em_dinheiro):
     """Calcule o troco a devolver ao cliente com notas de 1,2,5,10,20,50.
@@ -153,6 +189,8 @@ def dar_troco(valor_a_pagar, valor_em_dinheiro):
         o valor da nota e a quantidade daquela nota.
         Se a quantidade de notas for igual a zero, não deve aparecer na lista.
     """
+
+
 
 
 def media_anual(temperaturas):
@@ -186,28 +224,18 @@ def maiores_13(idades, alturas):
         alturas (lista de floats): uma lista de alturas;
 
     Retorna:
-        uma lista de alturas dos alunos, conforme o criério definido.
+        uma lista de alturas dos alunos, conforme o critério definido.
     """
 
-    lista_a = []
-    lista_i = []
     lista_nova = []
 
-    for i in idades:
-        lista_i.append(i)
-    for n in alturas:
-        lista_a.append(n)
-    
-    conta_i = sum(lista_i) / len(lista_i)
-    conta_a = sum(lista_a) / len(lista_a)
+    conta_i = sum(idades) / len(idades)
+    conta_a = sum(alturas) / len(alturas)
 
-    for a in idades:
-        if a > 13:
-            lista_nova.append(a)
-    for y in alturas:
-        if y < conta_a:
+    for a, y in zip(idades, alturas):
+        if a > 13 and y < conta_a:
             lista_nova.append(y)
-
+       
     return lista_nova
 
 
@@ -220,6 +248,8 @@ def testa_primo(valor):
     Retorna:
         bool: True ou False, se o valor e ou não primo.
     """
+
+
         
 
 
@@ -255,6 +285,22 @@ def fibonacci(n):
         de Fibonacci.
     """
 
+    penultimo = 1
+    antipenultimo = 0
+    lista = []
+
+    for i in range(0, n):
+        penultimo = penultimo + antipenultimo
+        antipenultimo += antipenultimo
+        antipenultimo += penultimo 
+        i += i
+        lista.append(penultimo)
+    return lista
+
+
+
+
+
 
 def altera_salarios(salarios):
     """Calcule o aumento de salário de acordo com a seguinte tabela:
@@ -270,6 +316,26 @@ def altera_salarios(salarios):
     Retorna:
         uma lista de elementos float, correspondendo aos salários corrigidos.
     """
+
+    lista = []
+    minimo = 724
+    for i in salarios:
+        if i <= minimo:
+            total = (i * 0.20) + i
+            lista.append(total)
+        elif i > minimo and i <= (minimo * 2):
+            total1 = (i * 0.15) + i
+            lista.append(total1)
+        elif i > minimo * 2 and i <= (minimo * 5):
+            total2 = (i * 0.10) + i
+            lista.append(total2)
+        elif i > minimo * 5:
+            total3 = (i * 0.05) + i
+            lista.append(total3)
+    return lista
+
+
+
 
 
 

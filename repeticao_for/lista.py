@@ -190,6 +190,20 @@ def dar_troco(valor_a_pagar, valor_em_dinheiro):
         Se a quantidade de notas for igual a zero, não deve aparecer na lista.
     """
 
+    lista = [50, 20, 10, 5, 2, 1]
+    troco = valor_em_dinheiro - valor_a_pagar
+    notas = []
+    
+    if troco == 0:
+        return []
+    for i in lista:
+        divisão = troco // i
+        troco -= i * divisão
+        if divisão > 0:
+            notas.append((i, divisão))
+    return notas
+
+
 
 
 
@@ -249,6 +263,7 @@ def testa_primo(valor):
         bool: True ou False, se o valor e ou não primo.
     """
 
+            
 
         
 
@@ -285,16 +300,17 @@ def fibonacci(n):
         de Fibonacci.
     """
 
-    penultimo = 1
-    antipenultimo = 0
+    ultimo = 1
+    penultimo = 0
+    c = 0
     lista = []
-
-    for i in range(0, n):
-        penultimo = penultimo + antipenultimo
-        antipenultimo += antipenultimo
-        antipenultimo += penultimo 
-        i += i
-        lista.append(penultimo)
+        
+    for i in range(n):
+        c = penultimo + ultimo
+        ultimo = c
+        penultimo += ultimo
+        lista.append(c)
+        
     return lista
 
 

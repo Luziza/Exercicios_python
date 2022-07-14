@@ -105,6 +105,12 @@ def ordenamento_contrario(lista):
         list: uma lista com os elementos a ordem invertida.
     """
 
+    novo = []
+    for i, item in enumerate(lista):
+        novo.append(lista[(i + 1)* -1])
+    return novo
+
+
 
 
 
@@ -263,6 +269,17 @@ def testa_primo(valor):
         bool: True ou False, se o valor e ou não primo.
     """
 
+    if valor == 0:
+            return False
+
+    for i in range(1, valor + 1):
+        if valor % i != 0 and valor % valor == 0:
+            return True
+        
+        
+       
+                
+
             
 
         
@@ -300,17 +317,20 @@ def fibonacci(n):
         de Fibonacci.
     """
 
-    ultimo = 1
-    penultimo = 0
-    c = 0
+    """n1 = 1
+    n2 = 1
     lista = []
         
     for i in range(n):
-        c = penultimo + ultimo
-        ultimo = c
-        penultimo += ultimo
-        lista.append(c)
+        soma = n1 + n2
+        n2 == soma
+        lista.append(n2)
         
+    return lista"""
+
+    lista = []
+    for i in range(n):
+        lista.append(lista[-1] + lista[-2])
     return lista
 
 

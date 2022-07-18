@@ -317,20 +317,17 @@ def fibonacci(n):
         de Fibonacci.
     """
 
-    """n1 = 1
+    n1 = 0
     n2 = 1
-    lista = []
-        
-    for i in range(n):
-        soma = n1 + n2
-        n2 == soma
-        lista.append(n2)
-        
-    return lista"""
 
-    lista = []
-    for i in range(n):
-        lista.append(lista[-1] + lista[-2])
+    lista = [1]
+        
+    for i in range(n - 1):
+        soma = n1 + n2
+        n1 = n2
+        n2 = soma
+        lista.append(soma)
+        
     return lista
 
 

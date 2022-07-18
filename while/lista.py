@@ -6,6 +6,9 @@
 # Não utilize "for", métodos das estruturas de dados ou funções embutidas.
 
 
+from re import I
+
+
 def quantidade_de_impares(valor_inicial, valor_final):
     """Determine a quantidade de números ímpares num intervalo.
 
@@ -39,12 +42,11 @@ def soma_dos_inteiros(valor1, valor2):
         float: a soma dos valores dentro do intervalo dado.
     """
 
-    i = 0
-    conta = 0
-    while i in range(valor1, valor2):
-        conta += i
-        i += 1
-        return conta
+    i = valor1 + 1
+    while i > valor1 and i < valor2:
+        i += i
+
+    return i
 
 
 
@@ -60,6 +62,13 @@ def potencia(base, expoente):
     Retorna:
         int: o resultado de base elevado ao expoente.
     """
+
+    i = 0
+    while i in range(expoente):
+        if i <= expoente:
+            conta = base * base
+            i += 1
+        return conta
 
 
 def crescimento_populacional(populacao1, populacao2, crescimento1, crescimento2):
@@ -88,6 +97,7 @@ def fibonacci(n):
         uma lista de elementos inteiros correspondendo aos n primeiros elementos da série
         de Fibonacci.
     """
+
 
 
 def fatorial(numero):
@@ -153,6 +163,15 @@ def serie1(n):
 
     """
 
+    
+    i = 1
+    lista = []
+    while i <= n:
+        conta = 1/i 
+        lista.append(conta)
+        i += 1
+    return round(sum(lista), 2)
+
 
 def serie2(n):
     """Dado n, calcule o valor de
@@ -164,6 +183,16 @@ def serie2(n):
     Retorna:
         float: a soma dos valores da série, segundo a fórmula e o valor de n informados.
     """
+
+    i = 1
+    divisor = 1
+    conta = 0
+    while i <= n:
+        conta += i/divisor
+        divisor += 2
+        i += 1
+    return round(conta, 2)
+
 
 
 def serie_pi(n):
@@ -178,6 +207,17 @@ def serie_pi(n):
         float: o valor de pi calculado.
     """
 
+    i = 0
+    divisor = 1
+    conta = 0
+    while i < n:
+        if i % 2 != 0:
+            conta -= 4 /divisor
+        else: 
+            conta += 4 /divisor
+        divisor += 2
+        i += 1
+    return round(conta, 6)
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0

@@ -50,6 +50,11 @@ def soma_dobro(a, b):
     soma_dobro(2, 2) -> 8
     """
 
+    if a != b:
+        return a + b
+    elif a == b:
+        return (a + b) * 2
+
 
 def diff21(n):
     """
@@ -59,6 +64,12 @@ def diff21(n):
     diff21(25) -> 8
     dica: abs(x) retorna o valor absoluto de x
     """
+
+    diferenca = 21 - n
+    if n < 21:
+        return diferenca
+    else:
+        return abs(diferenca * 2)
 
 
 def papagaio(falando, hora):

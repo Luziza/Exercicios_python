@@ -80,6 +80,8 @@ def papagaio(falando, hora):
     """
 
 
+
+
 def dez(a, b):
     """
     dados dois inteiros a e b
@@ -105,6 +107,8 @@ def apaga(s, n):
     apaga('kitten', 1) -> 'ktten'
     apaga('kitten', 4) -> 'kittn'
     """
+
+    return s[:n] + s[n + 1:]
 
 
 def troca(s):

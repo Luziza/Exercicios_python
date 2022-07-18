@@ -79,7 +79,7 @@ def papagaio(falando, hora):
     temos problemas se o papagaio estiver falando antes da 7 ou depois das 20
     """
 
-    if falando == True and hora < 7 or hora > 20:
+    if falando == True and hora < 7 or falando == True and hora > 20:
         return True
     else:
         return False
@@ -158,8 +158,13 @@ def explode_string(s):
     explode_string('abc') -> 'aababc'
     explode_string('ab') -> 'aab'
     """
-
-
+    ia = 0
+    tamanho = len(s)
+    palavra = ''
+    for i in range(tamanho):
+        palavra += s[:ia + 1]
+        ia += 1
+    return palavra
 
 
 def conta_noves(nums):
@@ -175,15 +180,8 @@ def nove_na_frente(nums):
     nove_na_frente([1, 2, 3, 4, 9]) -> False
     nove_na_frente([1, 2, 3, 4, 5]) -> False
     """
-
-    if nums == []:
-        return False
-    i = 0
-    while i < 4:
-        if nums[i] == 9:
-            return True
-        else:
-            return False
+    
+    return 9 in nums[:4]
 
 
 def alo_nome(nome):

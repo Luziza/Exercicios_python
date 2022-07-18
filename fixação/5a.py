@@ -79,6 +79,10 @@ def papagaio(falando, hora):
     temos problemas se o papagaio estiver falando antes da 7 ou depois das 20
     """
 
+    if falando == True and hora < 7 or hora > 20:
+        return True
+    else:
+        return False
 
 
 
@@ -87,6 +91,11 @@ def dez(a, b):
     dados dois inteiros a e b
     retorna True se um dos dois é 10 ou a soma é 10
     """
+
+    if a == 10 or b == 10 or a + b == 10:
+        return True
+    else: 
+        return False
 
 
 def dista10(n):
@@ -99,6 +108,10 @@ def dista10(n):
     dista10(89) -> False
     """
 
+    if abs(100 - n) <= 10 or abs(200 - n) <= 10:
+        return True
+    else:
+        return False
 
 def apaga(s, n):
     """
@@ -121,6 +134,13 @@ def troca(s):
     troca('ab') -> 'ba'
     """
 
+    if len(s) <= 1:
+        return s
+    else:
+        final = len(s)
+        meio = s[1: final - 1]
+        return s[-1] + meio + s[0]
+
 
 def multi_string(s, n):
     """
@@ -128,6 +148,8 @@ def multi_string(s, n):
     retorna uma string com n cópias da string original
     multi_string('Oi', 2) -> 'OiOi'
     """
+
+    return (s * n)
 
 
 def explode_string(s):
@@ -138,8 +160,12 @@ def explode_string(s):
     """
 
 
+
+
 def conta_noves(nums):
     """Conta quantas vezes aparece o 9 numa lista nums."""
+
+    return nums.count(9)
 
 
 def nove_na_frente(nums):
@@ -150,6 +176,15 @@ def nove_na_frente(nums):
     nove_na_frente([1, 2, 3, 4, 5]) -> False
     """
 
+    if nums == []:
+        return False
+    i = 0
+    while i < 4:
+        if nums[i] == 9:
+            return True
+        else:
+            return False
+
 
 def alo_nome(nome):
     """
@@ -159,6 +194,8 @@ def alo_nome(nome):
     alo_nome('X') -> 'Alô X!'
     """
 
+    return "Alô " + nome + "!"
+
 
 def cria_tags(tag, palavra):
     """
@@ -166,6 +203,7 @@ def cria_tags(tag, palavra):
     cria_tags('i', 'Alô'), '<i>Alô</i>'
     cria_tags('cite', 'Uhul'), '<cite>Uhul</cite>'
     """
+    return "<" + tag + ">" + palavra + "</" + tag + ">"
 
 
 def final_extra(s):
@@ -177,6 +215,10 @@ def final_extra(s):
     final_extra('Oi'), 'OiOiOi'
     """
 
+    if len(s) >= 2:
+        penultimo = len(s) - 2
+        return s[penultimo:] * 3
+
 
 def primeira_metade(s):
     """
@@ -185,6 +227,9 @@ def primeira_metade(s):
     primeira_metade('Lula') -> 'Lu'
     primeira_metade('abcdef') -> 'abc'
     """
+
+    metade = round(len(s) / 2)
+    return s[0 :metade]
 
 
 def sem_pontas(s):
@@ -196,6 +241,11 @@ def sem_pontas(s):
     sem_pontas('codigo') -> 'odig'
     """
 
+    tamanho = len(s)
+    return s[1: tamanho - 1]
+
+
+
 
 def gira_esquerda_2(s):
     """
@@ -204,6 +254,9 @@ def gira_esquerda_2(s):
     gira_esquerda_2('Beleza') -> 'lezaBe'
     gira_esquerda_2('Oi') -> 'Oi'
     """
+
+    tamanho = len(s)
+    return s[2: tamanho - 0] + s[:2]
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!

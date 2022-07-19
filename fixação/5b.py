@@ -18,6 +18,12 @@ def comeco_ou_fim_6(nums):
     comeco_ou_fim_6([3, 2, 1]) -> False
     """
 
+    for index, i in enumerate(nums):
+        if nums[0] == 6 or nums[-1] == 6:
+            return True
+        else: 
+            return False
+
 
 def inicio_fim_igual(nums):
     """
@@ -46,6 +52,13 @@ def extremidades_iguais(a, b):
     extremidades_iguais([1, 2, 3], [1, 3]) -> True
     """
 
+    if a[0] == b[0]:
+        return True
+    elif a[-1] == b[-1]:
+        return True
+    else:
+        return False
+
 
 
 
@@ -57,6 +70,26 @@ def maior_ponta(nums):
     maior_ponta([1, 2, 3]) -> [3, 3, 3]
     maior_ponta([1, 3, 2]) -> [2, 2, 2]
     """
+
+    i = 0
+    lista = []
+    if nums[0] > nums[-1]:
+        while i < len(nums):
+            lista.append(nums[0])
+            i += 1
+    elif nums[-1] > nums[0]:
+        while i < len(nums):
+            lista.append(nums[-1])
+            i += 1
+    elif nums[0] == nums[-1]:
+        while i < len(nums):
+            lista.append(nums[0])
+            i += 1
+    return lista
+    
+
+
+
 
 
 def soma_2_primeiros(nums):
@@ -82,10 +115,17 @@ def meio_do_caminho(a, b):
     meio_do_caminho([5, 2, 9], [1, 4, 5]) -> [2, 4]
     """
 
+    meio = (len(a) // 2)
+    meio1 =(len(b) // 2)
+    return [a[meio], b[meio1]]
+
+
+
 
 def numero_invertido(numero):
     """Receba um inteiro positivo e o mostre invertido. Ex.: 1234 gera 4321"""
 
+    return int(str(numero)[::-1])
 
 def gago(texto):
     """Receba um texto e devolva-o repetindo a primeira letra de cada palavra, junto com um traço
@@ -94,11 +134,21 @@ def gago(texto):
     """
 
 
+    return texto[0] + '-' + texto
+
+
 def saudacao(nome, hora):
     """Escreva uma saudação para a pessoa, dependendo do horário do dia:
     Entre 5 e 12: dia
     Entre 12 e 18: tarde
     Entre 18 e 5: noite"""
+
+    if hora >= 5 and hora < 12:
+        return "Bom dia " + nome
+    elif hora >= 12 and hora <= 18:
+        return "Boa tarde " + nome
+    else: 
+        return "Boa noite " + nome
 
 
 def rosquinhas(n):
@@ -110,6 +160,10 @@ def rosquinhas(n):
     rosquinhas(23) -> 'muitas rosquinhas'
     """
 
+    if n >= 10:
+        return "muitas rosquinhas"
+    else: 
+        return str(n) + " rosquinhas"
 
 def pontas(s):
     """
@@ -118,6 +172,12 @@ def pontas(s):
     Assim 'palmeiras' retorna 'paas'
     No entanto, se a string tiver menos que 2 letras, retorna uma string vazia
     """
+
+    penultimo = (len(s))
+    if len(s) < 2:
+        return ''
+    else:
+        return s[:2] + s[penultimo:] + s[-2:]
 
 
 def fixa_primeiro(s):
@@ -128,6 +188,8 @@ def fixa_primeiro(s):
     Dica: use s.replace(stra, strb)
     """
 
+    s.replace('a' , '*')
+    return s
 
 def nomes_pontas(n):
     """Dada uma string n contendo o nome completo de uma pessoa,
@@ -136,6 +198,15 @@ def nomes_pontas(n):
     "Marco André Lopes Mendes" -> "MARCO MENDES"
     """
 
+    lista = []
+    nomes = n.split(" ")
+    if nomes != '':
+        lista.append(nomes)
+        nome = lista[0]
+    return nome
+
+
+
 
 def nomes_pontas_e_iniciais_do_meio(n):
     """Dada uma string n contendo o nome completo de uma pessoa,
@@ -143,6 +214,7 @@ def nomes_pontas_e_iniciais_do_meio(n):
     e as inciais dos nomes do meio, em maiúsculas.
     "Marco André Lopes Mendes" -> "MARCO A L MENDES"
     """
+
 
 
 def mistura2(a, b):
@@ -154,16 +226,39 @@ def mistura2(a, b):
       'dog', 'dinner' -> 'dig donner'
     """
 
+    ultimo = len(b) - 1
+    ultimo1 = len(b) - 1
+    return b[0: ultimo] + a[-1:] + ' ' + a[0: ultimo1] + b[-1:]
 
 def tres_maiusculas(texto):
     """Encontre a primeira ocorrência de 3 letras maiúsculas consecutivas
     no texto."""
+
+    '''lista = []
+    for i, letra in enumerate(texto):
+        if letra == letra.upper():
+           lista.append[letra]
+    return len(lista) '''
+            
+
+
 
 
 def im_pares_unicos(lista):
     """Separe em listas os impares e pares únicos (não considere duplicidades),
     dos inteiros da 'lista'
     """
+
+    lista1 = []
+    lista2 = []
+    for index, i in enumerate(lista):
+        if i % 2 == 0:
+            lista1.append(i)
+        else:
+            lista2.append(i)
+
+
+    return lista1, lista2
 
 
 ## Área de testes: só mexa aqui se souber o que está fazendo!

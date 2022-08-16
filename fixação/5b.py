@@ -133,8 +133,14 @@ def gago(texto):
     gago("eu deveria ter estudado mais") -> "e-eu d-deveria t-ter e-estudado m-mais"
     """
 
+    palavras = texto.split()
 
-    return texto[0] + '-' + texto
+    novo = []
+    for palavra in palavras:
+        novo.append(f"{palavra[0]}-{palavra}") 
+    novo_texto = " ".join(novo)
+
+    return novo_texto
 
 
 def saudacao(nome, hora):
@@ -188,8 +194,7 @@ def fixa_primeiro(s):
     Dica: use s.replace(stra, strb)
     """
 
-    s.replace('a' , '*')
-    return s
+    return f"{s[0]}{s[1:].replace(s[0],'*')}"
 
 def nomes_pontas(n):
     """Dada uma string n contendo o nome completo de uma pessoa,
@@ -197,13 +202,7 @@ def nomes_pontas(n):
     maiúsculas.
     "Marco André Lopes Mendes" -> "MARCO MENDES"
     """
-
-    lista = []
-    nomes = n.split(" ")
-    if nomes != '':
-        lista.append(nomes)
-        nome = lista[0]
-    return nome
+    
 
 
 
@@ -215,6 +214,19 @@ def nomes_pontas_e_iniciais_do_meio(n):
     "Marco André Lopes Mendes" -> "MARCO A L MENDES"
     """
 
+
+    nomes = n.upper().split()
+
+    novo = []
+    novo.append(nomes[0])
+
+    for nome in nomes[1:-1]:
+        if nome not in "DE DA DO DOS DAS":
+            novo.append(nome[0])
+
+    novo.append(nomes[-1])
+
+    return " ".join(novo)
 
 
 def mistura2(a, b):
@@ -239,6 +251,10 @@ def tres_maiusculas(texto):
         if letra == letra.upper():
            lista.append[letra]
     return len(lista) '''
+
+    for i in range(len(texto) - 2):
+        if texto[i : i + 3].isupper():
+            return i
             
 
 
@@ -253,9 +269,11 @@ def im_pares_unicos(lista):
     lista2 = []
     for index, i in enumerate(lista):
         if i % 2 == 0:
-            lista1.append(i)
+            if i not in lista1:
+                lista1.append(i)
         else:
-            lista2.append(i)
+            if i not in lista2:
+                lista2.append(i)
 
 
     return lista1, lista2

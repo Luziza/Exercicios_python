@@ -148,6 +148,17 @@ def soma_13(nums):
     soma_13([13, 1, 2, 3, 4]) -> 0
     """
 
+    index = 0
+    tamanho = len(nums)
+    novo = []
+
+    while index < tamanho -1:
+        if nums[index] != 13:
+            novo.append(nums[index])
+            index += 1
+        return novo
+
+
 
 def tem_22(nums):
     """

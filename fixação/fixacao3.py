@@ -8,6 +8,9 @@
 # raciocínio com problemas novos.
 
 
+from re import A
+
+
 def perto_de_10(n):
     """
     Seja um n não negativo, retorna True se o número está a distância de
@@ -76,6 +79,16 @@ def duplica_caracter(s):
     duplica_caracter('Hi-There') -> 'HHii--TThheerree'
     """
 
+    novo = []
+    index = 0
+    a = list(s)
+
+    while index < len(a):
+        novo.append(a[index] + a[index])
+        index += 1
+    return ''.join(novo)
+
+
 
 
 
@@ -87,6 +100,10 @@ def conta_palavra(s, palavra):
     conta_palavra ('ana e mariana gostam de banana', 'ana') == 4
     """
 
+    s = s.split(' ')
+    
+    return s.count(palavra)
+
 
 def conta_oi(s):
     """
@@ -95,6 +112,14 @@ def conta_oi(s):
     conta_oi('ABCoi oi') -> 2
     conta_oi('oioi') -> 2
     """
+
+   
+    
+    contagem = 0
+
+    if 'oi' in s:
+        contagem += 1
+    return contagem
 
 
 
@@ -118,6 +143,8 @@ def conta_bola(s):
     """
 
 
+
+
 def fim_do_outro(a, b):
     """
     As duas strings devem ser convertidas para minúsculo via lower()
@@ -128,6 +155,17 @@ def fim_do_outro(a, b):
     fim_do_outro('abc', 'abXabc') -> True
     """
 
+    mini = a.lower()
+    mini1 = b.lower()
+
+    if mini[-len(mini1):] == mini1:
+        return True
+    elif mini == mini1[-len(mini):]:
+        return True
+    else: 
+        return False
+
+
 
 def conta_pares(nums):
     """
@@ -136,6 +174,16 @@ def conta_pares(nums):
     conta_pares([2, 2, 0]) -> 3
     conta_pares([1, 3, 5]) -> 0
     """
+
+    index = 0
+    novo = []
+
+    while index <= len(nums) - 1:
+        if nums[index] % 2 == 0:
+            novo.append(nums[index])
+        index += 1
+    return len(novo)
+
 
 
 def soma_13(nums):

@@ -125,6 +125,15 @@ def troca(s):
     troca('ab') -> 'ba'
     """
 
+   
+    meio = s[1: -1 ]
+    if len(s) <= 1:
+        return s
+    else:
+        return s[-1] + meio + s[0]
+
+
+
 
 def multi_string(s, n):
     """
@@ -133,6 +142,13 @@ def multi_string(s, n):
     multi_string('Oi', 2) -> 'OiOi'
     """
 
+    l = 0
+    lista = []
+    while l < n:
+        lista.append(s)
+        l += 1
+    return "".join(lista)
+
 
 def explode_string(s):
     """
@@ -140,10 +156,26 @@ def explode_string(s):
     explode_string('abc') -> 'aababc'
     explode_string('ab') -> 'aab'
     """
+    
+    novo = []
+    i = 0
+
+    if len(s) == 1:
+        return s
+
+    while i < len(s):
+        novo.append(s[:i + 1])
+        i += 1
+    return "".join(novo)
+
+
 
 
 def conta_noves(nums):
     """ Conta quantas vezes aparece o 9 numa lista nums."""
+
+    return nums.count(9)
+
 
 
 def nove_na_frente(nums):
@@ -154,6 +186,12 @@ def nove_na_frente(nums):
     nove_na_frente([1, 2, 3, 4, 5]) -> False
     """
 
+    novo = nums[:4]
+    if novo.count(9) >= 1:
+        return True
+    else: 
+        return False
+
 
 def alo_nome(nome):
     """
@@ -163,6 +201,8 @@ def alo_nome(nome):
     alo_nome('X') -> 'Alô X!'
     """
 
+    return "Alô " + nome + "!"
+
 
 def cria_tags(tag, palavra):
     """
@@ -170,6 +210,8 @@ def cria_tags(tag, palavra):
     cria_tags('i', 'Alô'), '<i>Alô</i>'
     cria_tags('cite', 'Uhul'), '<cite>Uhul</cite>'
     """
+
+    return "<" + tag + ">" + palavra + "</" + tag + ">"
 
 
 def final_extra(s):
@@ -180,6 +222,10 @@ def final_extra(s):
     final_extra('ab'), 'ababab'
     final_extra('Oi'), 'OiOiOi'
     """
+    if len(s) == 1:
+        return s
+    else:
+        return s[-2:] * 3
 
 
 def primeira_metade(s):
@@ -190,6 +236,9 @@ def primeira_metade(s):
     primeira_metade('abcdef') -> 'abc'
     """
 
+    metade = int(len(s) / 2)
+    return s[:metade]
+
 
 def sem_pontas(s):
     """
@@ -199,6 +248,8 @@ def sem_pontas(s):
     sem_pontas('Python') -> 'ytho'
     sem_pontas('codigo') -> 'odig'
     """
+
+    return s[1:-1]
 
 
 def gira_esquerda_2(s):

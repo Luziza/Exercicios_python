@@ -95,6 +95,11 @@ def gago(texto):
     gago("eu deveria ter estudado mais") -> "e-eu d-deveria t-ter e-estudado m-mais"
     """
 
+    texto = texto.split(" ")
+    lista = [x[0] +"-" +  x for x in texto]
+    return " ".join(lista)
+
+
 
 def explode_string(s):
     """
@@ -103,6 +108,7 @@ def explode_string(s):
     explode_string('ab') -> 'aab'
     """
 
+    return []
 
 def intercalamento_listas(lista1, lista2):
     """Usando 'lista1' e 'lista2', ambas do mesmo comprimento,

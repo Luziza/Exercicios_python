@@ -108,12 +108,21 @@ def explode_string(s):
     explode_string('ab') -> 'aab'
     """
 
-    return []
+    c = [(s[:a]) for a in range(len(s) + 1)]
+    transforma = [numero for sublista in c for numero in sublista]
+    return "".join(transforma)
+
 
 def intercalamento_listas(lista1, lista2):
     """Usando 'lista1' e 'lista2', ambas do mesmo comprimento,
     crie uma nova lista composta pelo
     intercalamento entre as duas."""
+
+
+    novo = [(lista1[b],lista2[b]) for b in range(len(lista1))]       
+    transforma = [numero for sublista in novo for numero in sublista]
+
+    return transforma
 
     
 
@@ -127,6 +136,8 @@ def numeros_sortudos(limite_inferior=1, limite_superior=100000):
     Dica: faça uma função de validação e outra que a chama e
     verifica o intervalo dado
     """
+
+    return len([x for x in range(limite_inferior, limite_superior) if "2" in list(str(x)) and "7" not in list(str(x))])
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!

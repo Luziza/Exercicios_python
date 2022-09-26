@@ -35,7 +35,7 @@ def mulher_homem(mulher, homem):
     um dicionário associando cada mulher a um homem. Quantos itens terá o
     dicionário assim produzido?"""
 
-    return {m:h for m in mulher for h in homem }
+     return {mulher : homem for (mulher, homem) in zip(mulher, homem) }
 
 
 def produto_cartesiano(homens, mulheres):
